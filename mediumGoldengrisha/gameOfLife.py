@@ -6,7 +6,6 @@ def get_neighbours(x, y, grid):
             if (i == x and j == y) or i < 0 or j < 0 or i >= len(grid) or j >= len(grid[0]):
                 continue
             if grid[i][j] == 1:
-                neighbours += 1
     return neighbours
 
 def crop_grid(grid):
