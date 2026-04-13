@@ -1,0 +1,130 @@
+##Collab with RAFAbot_MKI. Tested homelab setup and local LLM for a "vibe coding" session.
+
+def get_neighbours(x, y, grid):
+    """Returns the number of live neighbours around the cell at position (x, y)."""
+    neighbours = 0
+    for i in range(x - 1, x + 2):
+        for j in range(y - 1, y + 2):
+            if (i == x and j == y) or i < 0 or j < 0 or i >= len(grid) or j >= len(grid[0]):
+                continue
+            if grid[i][j] == 1:
+                neighbours += 1
+    return neighbours
+
+def crop_grid(grid):
+    """Crop the grid around the living cells."""
+    rows_with_living = [i for i in range(len(grid)) if any(grid[i])]
+    cols_with_living = [j for j in range(len(grid[0])) if any(row[j] for row in grid)]
+
+    if not rows_with_living or not cols_with_living:
+        return [[]]
+    
+    min_row, max_row = min(rows_with_living), max(rows_with_living)
+    min_col, max_col = min(cols_with_living), max(cols_with_living)
+    
+    cropped_grid = []
+    for i in range(min_row, max_row + 1):
+        cropped_grid.append(grid[i][min_col:max_col + 1])
+    
+    return cropped_grid
+
+def expand_grid(grid, padding):
+    """Expand the grid with a border of zeros."""
+    # Create a larger grid with padding
+    new_rows = len(grid) + 2 * padding
+    new_cols = len(grid[0]) + 2 * padding
+    new_grid = [[0] * new_cols for _ in range(new_rows)]
+    
+    # Copy the original grid to the center
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            new_grid[i + padding][j + padding] = grid[i][j]
+    
+    return new_grid
+
+def display_grid(grid):
+    """Display the grid in a readable format."""
+    print("Grid state:")
+    for row in grid:
+        print(' '.join(['█' if cell == 1 else '·' for cell in row]))
+    print()
+
+def game_of_life_infinite():
+    # Create a larger grid to accommodate glider movement
+    # Using 20x20 grid to ensure glider doesn't go out of bounds
+    initial_state = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ]
+    
+    # Place the glider pattern in the center
+    center_row = len(initial_state) // 2
+    center_col = len(initial_state[0]) // 2
+    
+    # Glider pattern centered at (center_row, center_col)
+    glider_pattern = [
+        [0, 1, 0],
+        [0, 0, 1],
+        [1, 1, 1]
+    ]
+    
+    for i in range(3):
+        for j in range(3):
+            if 0 <= center_row + i - 1 < len(initial_state) and 0 <= center_col + j - 1 < len(initial_state[0]):
+                initial_state[center_row + i - 1][center_col + j - 1] = glider_pattern[i][j]
+    
+    # Use sufficient padding to handle movement
+    padding = 5
+    grid = expand_grid(initial_state, padding)
+    
+    try:
+        while True:
+            display_grid(grid)
+            
+            new_grid = [[0] * len(grid[0]) for _ in range(len(grid))]
+            
+            # Apply Game of Life rules to all cells (excluding the padding)
+            for x in range(1, len(grid) - 1):
+                for y in range(1, len(grid[0]) - 1):
+                    alive = grid[x][y] == 1
+                    neighbours = get_neighbours(x, y, grid)
+
+                    if alive:
+                        if neighbours < 2 or neighbours > 3:
+                            new_grid[x][y] = 0
+                        else:
+                            new_grid[x][y] = 1
+                    else:
+                        if neighbours == 3:
+                            new_grid[x][y] = 1
+
+            grid = new_grid
+            
+            # Add a small delay to see the animation (optional)
+            import time
+            time.sleep(0.5)
+            
+    except KeyboardInterrupt:
+        print("\nSimulation stopped by user.")
+
+# Run the simulation
+if __name__ == "__main__":
+    game_of_life_infinite() 
