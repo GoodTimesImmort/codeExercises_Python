@@ -1,3 +1,11 @@
+"""
+File Name: 05buggy.py
+Author: noStarchPress
+Reproduced: goodTimesImmort
+Description: Find a bug 
+[gT_I]: I found an alternate solution. Rad!
+"""
+
 import random
 number1 = random.randint(1, 10)
 number2 = random.randint(1, 10)

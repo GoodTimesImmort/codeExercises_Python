@@ -1,4 +1,11 @@
-# Caesar Cipher
+"""
+File Name: 12cipher.py
+Author: noStarchPress
+Reproduced: goodTimesImmort
+Description: Simple Caesar's cipher encoder and decoder 
+[gT_I]: Am I cryptologist now?
+"""
+
 SYMBOLS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 MAX_KEY_SIZE = len(SYMBOLS)
 

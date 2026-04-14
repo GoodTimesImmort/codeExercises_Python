@@ -1,3 +1,11 @@
+"""
+File Name: 10bagels.py
+Author: noStarchPress
+Reproduced: goodTimesImmort
+Description: algo and while loops 
+[gT_I]: number trickery
+"""
+
 import random
 
 NUM_DIGITS = 3

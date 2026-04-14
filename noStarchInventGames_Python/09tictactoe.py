@@ -1,4 +1,10 @@
-#Tic-Tac-Toe
+"""
+File Name: 09tictactoe.py
+Author: noStarchPress
+Reproduced: goodTimesImmort
+Description: Input and memory
+[gT_I]: Wargames (Must watch!)
+"""
 
 import random
 

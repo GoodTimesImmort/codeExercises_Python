@@ -1,3 +1,12 @@
+
+"""
+File Name: 06coinflips.py
+Author: noStarchPress
+Reproduced: goodTimesImmort
+Description: while loop
+[gT_I]: twoFace.exe
+"""
+
 import random
 print('I will flip a coin 1000 times. Guess how many times it will come up heads. (Press enter to begin)')
 input()

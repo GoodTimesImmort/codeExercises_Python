@@ -1,4 +1,11 @@
-# ReversegamAIsim1: a clone of Othello/Reversi
+"""
+File Name: 14AISim1.py
+Author: noStarchPress
+Reproduced: goodTimesImmort
+Description: # ReversegamAIsim1: a clone of Othello/Reversi
+[gT_I]: Sim 1
+"""
+
 import random
 import sys
 WIDTH = 8 # Board is 8 spaces wide.

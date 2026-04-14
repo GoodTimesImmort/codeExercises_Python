@@ -1,4 +1,10 @@
-# This is a Guess the Number game.
+"""
+File Name: 02guess.py
+Author: noStarchPress
+Reproduced: goodTimesImmort
+Description: # This is a Guess the Number game.
+[gT_I]: "Guessing"
+"""
 import random
 
 guessesTaken = 0

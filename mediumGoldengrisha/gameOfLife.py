@@ -1,3 +1,10 @@
+"""
+File Name: gameOfLIfe_Rb-MKI-testing.py
+Author: Golden Grisha 
+Reproduced: goodTimesImmort
+Description: Collab with RAFAbot_MKI. Tested homelab setup and local LLM for a "vibe coding" session.
+[gT_I]: It lives and it can vibe!
+"""
 def get_neighbours(x, y, grid):
     """Returns the number of live neighbours around the cell at position (x, y)."""
     neighbours = 0

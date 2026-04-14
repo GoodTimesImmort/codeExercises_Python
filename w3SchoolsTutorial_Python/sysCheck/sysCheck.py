@@ -1,5 +1,5 @@
 """
-File Name: fibFinder.py
+File Name: sysCheck.py
 Author: w3school.com
 Reproduced: goodTimesImmort
 Description: Sample of importing modules.

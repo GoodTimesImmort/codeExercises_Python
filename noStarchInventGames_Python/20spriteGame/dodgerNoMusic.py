@@ -1,3 +1,11 @@
+"""
+File Name: dodgerNoMusic.py
+Author: noStarchPress
+Reproduced: goodTimesImmort
+Description: Collision based game without music (module is tricky)
+[gT_I]: Can't be a bug if it isn't included in the program anymore. 
+"""
+
 import pygame, sys, random
 from pygame.locals import *
 

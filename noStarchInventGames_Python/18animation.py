@@ -1,3 +1,11 @@
+"""
+File Name: 18animation.py
+Author: noStarchPress
+Reproduced: goodTimesImmort
+Description: Animation with pygame
+[gT_I]: Sprites everywhere
+"""
+
 import pygame, sys, time
 from pygame.locals import *
 

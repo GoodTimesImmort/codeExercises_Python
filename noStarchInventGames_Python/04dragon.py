@@ -1,3 +1,10 @@
+"""
+File Name: 04dragon.py
+Author: noStarchPress
+Reproduced: goodTimesImmort
+Description: importing
+[gT_I]: random times
+"""
 import random
 import time
 

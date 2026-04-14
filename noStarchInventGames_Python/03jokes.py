@@ -1,3 +1,10 @@
+"""
+File Name: 03jokes.py
+Author: noStarchPress
+Reproduced: goodTimesImmort
+Description: Input 
+[gT_I]: :)
+"""
 print('What do you get when you cross a snowman with a vampire?')
 input()
 print('Frostbite!')

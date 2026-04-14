@@ -1,3 +1,11 @@
+"""
+File Name: 08hangman2.py
+Author: noStarchPress
+Reproduced: goodTimesImmort
+Description: Graphics 
+[gT_I]: Improvements
+"""
+
 import random
 HANGMAN_PICS = ['''
   +---+

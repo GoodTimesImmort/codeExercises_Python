@@ -1,3 +1,11 @@
+"""
+File Name: 19collisinoDetection.py
+Author: noStarchPress
+Reproduced: goodTimesImmort
+Description: Collision detection for sprites with pygame
+[gT_I]: Crash override?
+"""
+
 import pygame, sys, random
 from pygame.locals import *
 

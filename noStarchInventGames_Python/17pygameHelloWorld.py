@@ -1,3 +1,11 @@
+"""
+File Name: 17pgameHelloWorld.py
+Author: noStarchPress
+Reproduced: goodTimesImmort
+Description: pygame "Hello World" program
+[gT_I]: Am I game dev now?
+"""
+
 import pygame, sys
 from pygame.locals import *
 

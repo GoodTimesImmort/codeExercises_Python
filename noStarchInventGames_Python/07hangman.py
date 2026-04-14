@@ -1,3 +1,11 @@
+"""
+File Name: 07hangman.py
+Author: noStarchPress
+Reproduced: goodTimesImmort
+Description: Graphics 
+[gT_I]: Text based games came to mind
+"""
+
 import random
 HANGMAN_PICS = ['''
   +---+

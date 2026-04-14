@@ -1,4 +1,10 @@
-# Sonar Treasure Hunt
+"""
+File Name: 11sonar.py
+Author: noStarchPress
+Reproduced: goodTimesImmort
+Description: Sonar Treasure Hunt 
+[gT_I]: You sank my battleship!
+"""
 
 import random
 import sys

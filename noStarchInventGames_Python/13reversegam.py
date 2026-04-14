@@ -1,3 +1,11 @@
+"""
+File Name: 13reversegame.py
+Author: noStarchPress
+Reproduced: goodTimesImmort
+Description: Text graphics othello game 
+[gT_I]: The strategy is to not cry when you lose
+"""
+
 # Reversegam: a clone of Othello/Reversi
 import random
 import sys
